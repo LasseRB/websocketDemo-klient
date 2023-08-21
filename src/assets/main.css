@@ -1,37 +1,56 @@
-@import './base.css';
-
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200&display=swap');
 html, body {
-  background-color: hsl(203, 61%, 60%);
+  background-color: #ffdfe1;
   height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  color: #b36f7a;
+
 }
 
-#app {
+h1, h2, h3 {
+  text-align: center;
+  word-break: break-word;
+  color: #4f0bc0;
+}
+h1 {
+  font-size: 240pt;
+  vertical-align: text-top;
+  line-height: 10px;
+}
+h2 {
+  font-size: 160pt;
+  line-height: 10px;
+}
+
+h3 {
+  font-size: 80pt;
+  line-height: 73px;
+}
+
+h4 {
+  font-size: 30pt;
+}
+
+h5 {
+  font-size: 20pt;
+  font-weight: lighter;
+}
+
+img {
   margin: 0 auto;
+  height: 80vh;
+}
+
+pre {
+  background: rgba(255, 255, 255, 0.71);
+  color: #d35e0a;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-family: consolas,monospace;
   font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+  font-size: 1.15em !important;
 }

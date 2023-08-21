@@ -25,18 +25,18 @@ function avatar() {
 }
 
 let mouseRef = ref({x: 0, y: 0});
-
+let lastScroll = 0;
 onMounted(() => {
   window.addEventListener("mousemove", (mouse) => {
     mouseRef.value = {x: mouse.clientX, y: mouse.clientY}
-
     emitMouseMove(mouseRef.value)
   });
+
+
 })
 
 const position = computed(() => {
   if (props.isPlayer) {
-    console.log(mouseRef.value.x)
     return `left:${mouseRef.value.x}px; top: ${mouseRef.value.y}px;`
   } else {
     return `left:${props.warrior?.position.x}px; top: ${props.warrior?.position.y}px;`
