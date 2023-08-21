@@ -1,3 +1,4 @@
 ###  Demo
-#### lasse.space/demo
+##### gå til:
+#### > websockets-demo.netlify.app
 ##### Denne præsentation er interaktiv!

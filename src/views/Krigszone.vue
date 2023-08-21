@@ -15,7 +15,7 @@ import hornoraryMentions from '../md/honoraryMentions.md'
 
 const krigere = reactive(state.warriors);
 
-const page = ref(9);
+const page = ref(8);
 
 function tilbage() {
   if (page.value >= 1) {

@@ -48,6 +48,7 @@ const position = computed(() => {
 <template>
   <div class="kriger" :style="position" ref="mouse">
     <img :src="avatar()" class="avatar"/>
+    <div class="navn">{{ warrior.name }}</div>
   </div>
 </template>
 
@@ -62,6 +63,9 @@ const position = computed(() => {
 .avatar {
   width: 50px;
   height: auto;
+}
+.navn {
+  text-align: center;
 }
 
 </style>

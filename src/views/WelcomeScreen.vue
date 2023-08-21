@@ -1,16 +1,20 @@
 <template>
   <div>
-    <h1>Velkommen kriger</h1>
+    <h2>Velkommen</h2>
+    <h2>Kriger</h2>
     <form @submit.prevent="submitForm">
-      <label for="name">Your Name:</label>
-      <input v-model="name" name="name"/>
+      <label for="name">Hvad vil du kaldes?:</label>
+      <input v-model="name" name="name"/> <br/>
       <label for="warrior">Mus, Kat eller Vue?</label>
+      <br/>
       <select v-model="selectedWarrior" name="warrior">
         <option value="" disabled>Select a warrior</option>
         <option v-for="warrior in warriors" :key="warrior.id" :value="warrior.id">{{ warrior.name }}</option>
       </select>
-      <button type="submit">Hop ind!</button>
-      {{ errors }}
+      <br/><br/>
+      <button class="hopindknap" type="submit">Hop ind!</button>
+      <br/>
+      <div class="error" >{{ errors }}</div>
     </form>
   </div>
 </template>
@@ -28,7 +32,7 @@ const warriors = [
   {id: 'vue', name: 'Vueify'}
 ];
 
-const errors = ref({});
+const errors = ref('');
 
 const submitForm = async () => {
   try {
@@ -44,7 +48,7 @@ const submitForm = async () => {
 
       name.value = '';
       selectedWarrior.value = '';
-      errors.value = {};
+      errors.value = '';
     }
     // Reset the form after submission if needed
     errors.value = 'Du skal sguda vælge noget!'
@@ -59,4 +63,23 @@ const submitForm = async () => {
 .error {
   color: red;
 }
+form {
+  margin: 0 auto;
+  width: 200px;
+}
+button , input {
+  height: 30px;
+  padding: 10px;
+  border: 3px solid blue;
+  border-radius: 10px;
+  color: #4f0bc0;
+}
+button:hover {
+  background-color: #fdfdfd;
+}
+.hopindknap {
+  width: 200px;
+  height: 50px;
+}
+
 </style>
