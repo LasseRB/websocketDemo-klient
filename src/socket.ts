@@ -1,6 +1,6 @@
 import { reactive } from 'vue';
 import { io } from 'socket.io-client';
-import { Kriger } from '../../../lib';
+import { Kriger } from '../src/lib';
 
 export const state = reactive({
   warriors: new Map<string, Kriger>(),

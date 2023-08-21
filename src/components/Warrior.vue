@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Kriger} from "../../../../lib";
+import {Kriger} from "../lib";
 import cat from "@/assets/cat.png"
 import mouse from "@/assets/mouse.png"
 import vue from "@/assets/vue.svg"
