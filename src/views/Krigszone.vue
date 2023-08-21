@@ -7,22 +7,28 @@ import http from '../md/http.md'
 import ajax from '../md/ajax.md'
 import websockets from '../md/websockets.md'
 import websockets_2 from '../md/websockets_2.md'
+import websockets_3 from '../md/websockets_3.md'
+import websockets_4 from '../md/websockets_4.md'
+import websockets_5 from '../md/websockets_5.md'
+import websockets_demo from '../md/websockets_demo.md'
+import hornoraryMentions from '../md/honoraryMentions.md'
 
 const krigere = reactive(state.warriors);
 
-const page = ref(1);
+const page = ref(9);
 
 function tilbage() {
-  if (page.value >= 2) {
+  if (page.value >= 1) {
     page.value -= 1
   }
 }
 
 function fremad() {
-  page.value += 1
+  page.value = (page.value + 1) % 10
 }
 
 onMounted(() => {
+
   addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft') {
       tilbage();
@@ -41,11 +47,16 @@ onMounted(() => {
       <div class="pil arrow-left icon" @click.prevent="tilbage"></div>
       <div class="pil arrow-right icon" @click.prevent="fremad"></div>
     </div>
-    <p1 class="page" v-show="page === 1"/>
-    <http class="page" v-show="page === 2"/>
-    <ajax class="page" v-show="page === 3"/>
-    <websockets class="page" v-show="page === 4"/>
-    <websockets_2 class="page" v-show="page === 5"/>
+    <p1 class="page" v-show="page === 0"/>
+    <http class="page" v-show="page === 1"/>
+    <ajax class="page" v-show="page === 2"/>
+    <websockets class="page" v-show="page === 3"/>
+    <websockets_2 class="page" v-show="page === 4"/>
+    <websockets_3 class="page" v-show="page === 5"/>
+    <websockets_4 class="page" v-show="page === 6"/>
+    <websockets_5 class="page" v-show="page === 7"/>
+    <websockets_demo class="page" v-show="page === 8"/>
+    <hornoraryMentions class="page" v-show="page === 9"/>
 
     <Warrior :warrior="state.kriger" :isPlayer="true"/>
     <div v-for="kriger of krigere.values()">

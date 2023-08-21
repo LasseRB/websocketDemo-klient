@@ -1,7 +1,5 @@
-####  Websockets 
-
-##### "**Full Duplex bi-directional communication**"
-
+#### Websockets
+##### Full Duplex bi-directional communication
 Klient sender 'opgraderings'-handshake
 ```javascript
 GET /chat HTTP/1.1
@@ -11,12 +9,9 @@ Connection: Upgrade
 Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
 Sec-WebSocket-Version: 13
 ```
-Forbindelsen går fra:
-En opgradering til http:
 ```javascript
-http://morsvogn.dk
-```
-til:
-```javascript
-ws://morsvogn.dk
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 ```

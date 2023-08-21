@@ -55,7 +55,7 @@ const position = computed(() => {
 .kriger {
   pointer-events: none;
   position: fixed;
-  transform: translate(-50%, -50%);
+  //transform: translate(-50%, -50%);
   filter: drop-shadow(18px 12px 27px rgba(0, 0, 0, 0.23));
 }
 

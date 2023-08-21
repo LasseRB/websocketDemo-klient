@@ -2,4 +2,6 @@
 #### _Asynchronous JavaScript and XML._
 ##### _NU bliver det realtime_ 
 
-** _det gjorde bare ikke rigtig_
+ * Stateless
+ * Headers everywhere
+ * Forsøgt løst med Short and Long Polling
