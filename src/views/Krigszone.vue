@@ -87,7 +87,7 @@ onMounted(() => {
       <div class="pil arrow-right icon" @click.prevent="fremad">
 
       </div>
-      
+
     </div>
     <p1 class="page" v-show="page === 0"/>
     <http class="page" v-show="page === 1"/>
@@ -102,7 +102,7 @@ onMounted(() => {
 
     <Warrior :warrior="state.kriger" :isPlayer="true"/>
     <div v-for="kriger of krigereIsammeslide">
-      <Warrior v-if="(kriger.id !== state.kriger.id)" :warrior="kriger"/>
+      <Warrior v-if="(kriger.id !== state.kriger.id) && kriger.name" :warrior="kriger"/>
     </div>
   </main>
 </template>
