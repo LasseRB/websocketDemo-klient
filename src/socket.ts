@@ -10,8 +10,8 @@ export const state = reactive({
 
 // "undefined" means the URL will be computed from the `window.location` object
 // const URL = meta.env.VITE_NODE_ENV === "production" ? undefined : "http://localhost:3000/demo";
-const URL = "http://localhost:1234/demo";
-// const URL = 'https://websocketdemo-server-vsbsqqkdka-ey.a.run.app/demo';
+// const URL = "http://localhost:1234/demo";
+const URL = 'https://websocketdemo-server-vsbsqqkdka-ey.a.run.app/demo';
 
 export const socket = io(URL);
 
