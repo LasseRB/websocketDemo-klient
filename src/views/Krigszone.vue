@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import {state} from "@/socket";
+import {emitSlideNumber, state} from "@/socket";
 import Warrior from "@/components/Warrior.vue";
-import {onMounted, reactive, ref} from "vue";
+import {computed, onMounted, reactive, ref} from "vue";
+import {socket} from "@/socket";
 import p1 from '../md/p1.md'
 import http from '../md/http.md'
 import ajax from '../md/ajax.md'
@@ -12,23 +13,58 @@ import websockets_4 from '../md/websockets_4.md'
 import websockets_5 from '../md/websockets_5.md'
 import websockets_demo from '../md/websockets_demo.md'
 import hornoraryMentions from '../md/honoraryMentions.md'
+import {Kriger} from "@/lib";
+import WarriorNavn from "@/components/WarriorNavn.vue";
 
-const krigere = reactive(state.warriors);
 
 const page = ref(8);
+const krigere = reactive(state.warriors);
+
+const krigereIsammeslide = computed(() => {
+  let slideKrigere: Kriger[] = []
+  krigere.forEach(kriger => {
+    if (kriger.slide === page.value) {
+      slideKrigere.push(kriger)
+    }
+  });
+  return slideKrigere;
+})
+const krigereHoejereSlide = computed(() => {
+  let slideKrigere: Kriger[] = []
+  krigere.forEach(kriger => {
+    if (kriger.slide > page.value) {
+      console.log(kriger)
+      slideKrigere.push(kriger)
+    }
+  });
+  return slideKrigere;
+})
+
+const krigereLavereSlide = computed(() => {
+  let slideKrigere: Kriger[] = []
+  krigere.forEach(kriger => {
+    if (kriger.slide < page.value) {
+      slideKrigere.push(kriger)
+    }
+  });
+  return slideKrigere;
+})
+
 
 function tilbage() {
   if (page.value >= 1) {
     page.value -= 1
+    emitSlideNumber(page.value);
   }
 }
 
 function fremad() {
-  page.value = (page.value + 1) % 10
+  page.value = (page.value + 1) % 10;
+  emitSlideNumber(page.value);
 }
 
 onMounted(() => {
-
+  state.kriger.slide = page.value;
   addEventListener('keydown', event => {
     if (event.key === 'ArrowLeft') {
       tilbage();
@@ -43,9 +79,15 @@ onMounted(() => {
     <div class="header">
       <div class="sidetal"> side {{ page }}</div>
     </div>
+
     <div class="footer">
-      <div class="pil arrow-left icon" @click.prevent="tilbage"></div>
-      <div class="pil arrow-right icon" @click.prevent="fremad"></div>
+      <div class="pil arrow-left icon" @click.prevent="tilbage">
+
+      </div>
+      <div class="pil arrow-right icon" @click.prevent="fremad">
+
+      </div>
+      
     </div>
     <p1 class="page" v-show="page === 0"/>
     <http class="page" v-show="page === 1"/>
@@ -59,8 +101,8 @@ onMounted(() => {
     <hornoraryMentions class="page" v-show="page === 9"/>
 
     <Warrior :warrior="state.kriger" :isPlayer="true"/>
-    <div v-for="kriger of krigere.values()">
-      <Warrior v-if="kriger.id !== state.kriger.id" :warrior="kriger"/>
+    <div v-for="kriger of krigereIsammeslide">
+      <Warrior v-if="(kriger.id !== state.kriger.id)" :warrior="kriger"/>
     </div>
   </main>
 </template>
